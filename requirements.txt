@@ -1,0 +1,6 @@
+numpy
+scipy
+gym
+matplotlib
+pygame
+h5py
