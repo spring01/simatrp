@@ -202,6 +202,11 @@ class ATRPBase(gym.Env):
         # collect reward
         reward = self._reward(done)
 
+        # compute monomer conversion rate
+        mono_idx = self.index[MONO]
+        mono_conv = 1.0 - self.quant[mono_idx] / self.added[mono_idx]
+        info['mono_conv'] = mono_conv
+
         return observation, reward, done, info
 
     def render(self, mode='human'):
