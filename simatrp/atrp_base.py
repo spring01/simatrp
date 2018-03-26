@@ -204,7 +204,10 @@ class ATRPBase(gym.Env):
 
         # compute monomer conversion rate
         mono_idx = self.index[MONO]
-        mono_conv = 1.0 - self.quant[mono_idx] / self.added[mono_idx]
+        if self.added[mono_idx]:
+            mono_conv = 1.0 - self.quant[mono_idx] / self.added[mono_idx]
+        else:
+            mono_conv = 0.0
         info['mono_conv'] = mono_conv
 
         return observation, reward, done, info
