@@ -403,7 +403,7 @@ class ATRPBase(gym.Env):
         if self.obs_noise is not None:
             noise = absolute_noise(self.obs_noise, len(current_quant))
             current_quant += noise
-        return np.concatenate([added, current_quant])
+        return np.concatenate([added, current_quant]).astype(np.float32)
 
     def stable_chains(self):
         quant = self.quant
